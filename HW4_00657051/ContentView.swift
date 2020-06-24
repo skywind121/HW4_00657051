@@ -9,8 +9,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var foodData = FoodData()
     var body: some View {
-        Text("Hello, World!")
+        VStack{
+            TabView{
+                FoodList(foodData: self.foodData).tabItem{
+                        Text("List")
+                        Image(systemName: "list.dash")
+                    }
+                
+                ChartView().tabItem{
+                        Text("Chart")
+                        Image(systemName: "chart.pie")
+                    }
+            }
+            .accentColor(.blue)
+        }
     }
 }
 
